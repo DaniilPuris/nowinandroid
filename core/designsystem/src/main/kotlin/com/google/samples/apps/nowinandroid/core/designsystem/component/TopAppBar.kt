@@ -35,6 +35,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.samples.apps.nowinandroid.core.designsystem.icon.NiaIcons
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
+import com.google.samples.apps.nowinandroid.core.designsystem.C
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,13 +51,19 @@ fun NiaTopAppBar(
     onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes)) },
+        title = {
+            Text(
+                text = stringResource(id = titleRes)
+                modifier = Modifier.testTag(С.TOP_APP_BAR_TITLE)
+            )
+                },
         navigationIcon = {
             IconButton(onClick = onNavigationClick) {
                 Icon(
                     imageVector = navigationIcon,
                     contentDescription = navigationIconContentDescription,
                     tint = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.testTag(С.NAVIGATION_ICON_BUTTON)
                 )
             }
         },
